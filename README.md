@@ -4,7 +4,7 @@
 
 ## Notes
 
-- [Freshman](https://github.com/arav06/pentesting/tree/main/freshman/README.md)
+- [Freshman](https://github.com/arav06/web3/tree/main/freshman/README.md)
 
 
 ***
