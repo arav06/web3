@@ -70,7 +70,7 @@ Each node have a special software installed to interact with the blockchain. Sin
 
 Miners are a type of node that perform mining
 
-Mining is the process of verifying multiple transactions,  grouping them together into 1 block and requesting the block to be added into the global transaction ledger
+Mining is the process of verifying multiple transactions,  grouping them together into 1 block and requesting the block to be added into the blockchain
 
 Mining is a hard task to perform and must be done securely. Miners who perform mining successfully receive a reward in the form of a token
 
@@ -180,9 +180,9 @@ The nodes on a network come to a consensus (agreement) via a consensus algorithm
 
 Bitcoin uses the proof of work algorithm and Ethereum moved over to proof of stake (from proof of work) during the serenity patch (the merge)
 
-In proof of work, the miners solve complex problems and the first miner to solve it will add the block to the blockchain and get a reward. Uses more computing power and hence more electricity. Greater computing power = Greater chances of reward
+- Proof of work -> Miners solve complex problems and the first miner to solve it will add the block to the blockchain and get a reward. Uses more computing power and hence more electricity. Greater computing power = Greater chances of reward
 
-In proof of stake, there are validators to verify a transaction instead of miners. A validator is randomly selected to verify a set of transactions and add it to a block and it to the blockchain. To become a validator, one must make a security deposit known as stake. Greater security deposit = Greater chance of being a validator
+- Proof of stake -> There are validators to verify a transaction instead of miners. A validator is randomly selected to verify a set of transactions and add it to a block and it to the blockchain. To become a validator, one must make a security deposit known as stake. Greater security deposit = Greater chance of being a validator
 
 It was built by Vitalik Buterin and the Ethereum Foundation oversees the open source development
 
