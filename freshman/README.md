@@ -331,9 +331,13 @@ The minimum number bits an integer can store is 8 bits and maximum is 256 bits a
 
 The range of values will be from `0 to (2^<bits>) - 1`
 
-The `public` keyword is used to call a function/access a variable from within the contract as well as outside of it
+The `public` keyword is prefixed to a function/variable if we want to call the function/access the variable from within the contract as well from another contract/javascript code. Public functions are listed in the ABI
+
+The `private` keyword is prefixed to a function/variable when we want to access the variable/call the function from only within the function. These functions are not include in the ABI
 
 The `view` keyword is used in a function when it does not change the value of any state/global variable. These functions do not require gas and do not change the state of the contract (state variables)
+
+Changing the state of the contract refers to changing the value of a state variable
 
 Functions can be created as follows
 
@@ -395,18 +399,24 @@ Strings support escape sequences such as `\n`, `\'`, `\"`, `\t`, `\f`, etc.
 
 When returning a string from a function, the return would be as follows `function arrReturn() public returns (string memory)`
 
-If we prefix a variable with the `memory` keyword, it will not store the value on the blockchain but instead in a temporary location during runtime and then remove it
+We use the `memory` keyword when returning strings/arrays since they are of not a fixed length and to hence store data in the heap
 
-It does not matter if it is a state variable
+Other data types of fixed length such as uint and bool are stored in the stack
+
+Storing in the stack is faster since the variables are of fixed length
+
+If we prefix a variable with the `memory` keyword, it will not store the value on the blockchain but instead in a temporary location during function call and then remove it
+
+These can be declared within functions
 
 ```sol
 string memory memVar = "hello memory variable is being tested";
 ```
 
-While we can also prefix it with the `storage` keyword to store it on the blockchain
+While we can also prefix it with the `storage` keyword to store it on the blockchain and will be stored after function execution 
 
 ```sol
 string storage storeVar = "hello storage variable is being tested";
 ```
 
-We use the `memory` keyword when returning strings/arrays to prevent them from being stored permanently 
+ABI stands for Application Binary Interface and it denotes all the functions which can be called and variables which can be accessed by public entities. It represents the features of the function in a compact way. Instructs how the external entities are to interact with the contract. Written in JSON
