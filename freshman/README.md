@@ -247,3 +247,37 @@ Crypto wallets are apps to create and manage multiple accounts and their private
 They let you make payments and interact with dApps by connecting your wallet to them. This accounts like a single sign on feature for the blockchain
 
 The most popular wallet for Ethereum is Metamask
+
+# Introduction to Remix
+
+Remix is an open source and web-based IDE to develop and deploy Ethereum smart contracts
+
+It lets you write smart contracts in Solidity and Javascript code as well as test, debug and deploy them
+
+![Remix](https://i.imgur.com/4RqBi40.png)
+
+Left sidebar contains file explorer, compiler, deployer and extensions menu
+
+The bottom has the output section to show results of compilation, deployment and function calls
+
+The middle is for code editing
+
+The `contracts` folder contains the Solidity smart contracts
+
+Using the Solidity Compiler, we can choose the version of the compiler and compile the code. This converts it to bytecode and runs it and makes it ready to be deployed
+
+When deploying our smart contract, Remix gives us various options to use as the virtual machine
+
+- Remix VM -> Simulation of the EVM. Remix will create fake accounts with 100 ETH during this. Thus 100 ETH is not for the test network. As long as the contract does interact with other contracts on the real network, the Remix VM allows for fast testing and debugging
+
+- Hardhat/Ganache/Foundry Provider -> We can also connect it to our local tools such as Hardhat, Foundry and Ganache
+
+- Injected Provider -> It can also be connected to wallets such as Metamask via the Injected Provider and interact with the real network
+
+- External HTTP Provider -> We can also set the VM to a remote one 
+
+- L2 Optimism/Arbitrum One Provider -> It can also be connected to wallets such as Metamask and interact with the Optimism/Arbitrum One network
+
+Once the contract is deployed, we can send data to it/retrieve data from it via the panel below
+
+It also lets you interact with contracts which you did not deploy but others have
