@@ -176,9 +176,13 @@ dApps are built using Solidity (Ethereum's programming language)
 
 Smart contracts are also written in this language and deployed to the network
 
-The nodes on the network come to a consensus (agreement) via proof of work. However, it will be moving over to proof of stake during the serenity patch
+The nodes on a network come to a consensus (agreement) via a consensus algorithm
 
-In proof of work, the miners solve complex problems and the first miner to solve it will add the block to the blockchain and get a reward
+Bitcoin uses the proof of work algorithm and Ethereum moved over to proof of stake (from proof of work) during the serenity patch (the merge)
+
+In proof of work, the miners solve complex problems and the first miner to solve it will add the block to the blockchain and get a reward. Uses more computing power and hence more electricity. Greater computing power = Greater chances of reward
+
+In proof of stake, there are validators to verify a transaction instead of miners. A validator is randomly selected to verify a set of transactions and add it to a block and it to the blockchain. To become a validator, one must make a security deposit known as stake. Greater security deposit = Greater chance of being a validator
 
 It was built by Vitalik Buterin and the Ethereum Foundation oversees the open source development
 
