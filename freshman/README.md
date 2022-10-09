@@ -162,3 +162,42 @@ Web2 - Read and Write
 
 Web3  - Read, Write and Own
 
+# What is Ethereum?
+
+Ethereum is another type of blockchain which supports transactions and smart contracts
+
+Unlike Bitcoin, Ethereum is more general purpose
+
+Developers can build decentralized applications (dApps) which can be executed on the Ethereum Virtual Machine and thus interact with the Ethereum network
+
+Global state of Ethereum contains the balance of each account as well as the state of the dApps
+
+dApps are built using Solidity (Ethereum's programming language)
+
+Smart contracts are also written in this language and deployed to the network
+
+The nodes on the network come to a consensus (agreement) via proof of work. However, it will be moving over to proof of stake during the serenity patch
+
+In proof of work, the miners solve complex problems and the first miner to solve it will add the block to the blockchain and get a reward
+
+It was built by Vitalik Buterin and the Ethereum Foundation oversees the open source development
+
+Ethereum has a token called Ether (ETH) which is used to make transactions
+
+Smart Contracts are pieces of code which are replicated and run on all nodes of the network and are automatically executed when a condition is true
+
+Ethereum allows for deploying of apps while still ensuring security and decentralization
+
+People can also create their own tokens on Ethereum without anyone's permission. There are standards to be followed when creating tokens
+
+The ERC20 standard is to be followed when creating and deploying a smart contract to the network
+
+ERC721 and ERC1155 are standards to be followed when creating and deploying NFTs to the network. Helps NFT  marketplaces be compatible with all types of NFTs
+
+These standards allow digital wallets to easily support all tokens without specific code for each
+
+When comparing it with Bitcoin, Ethereum has a faster block time and smaller block size
+
+Block time refers to the time taken by miners to verify a transaction and add the block to the blockchain
+
+Block size is the amount of space taken by each block on the blockchain
