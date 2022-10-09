@@ -281,3 +281,132 @@ When deploying our smart contract, Remix gives us various options to use as the 
 Once the contract is deployed, we can send data to it/retrieve data from it via the panel below
 
 It also lets you interact with contracts which you did not deploy but others have
+
+# Solidity
+
+Solidity is an objected oriented, high level programming language to build dApps and smart contracts
+
+All code written in solidity can be executed on the EVM
+
+It is statically typed and supports libraries and complex data types
+
+All solidity statements must end with `;`
+
+We can initialize our contract as follows
+
+```sol
+pragma ^0.8.10 // Defining the Solidity compiler version. In this case, this code can be run on all compilers above version 0.8.10
+
+contract myContract{ // Creating the contract named myContract
+
+// Solidity Code
+
+}
+```
+
+Solidity supports 3 types of variables
+
+- Local -> Declared inside a function and not stored on blockchain
+- State -> Declared outside a function and their values are stored on blockchain
+- Global -> Store information about the blockchain and it supplied by EVM during runtime. Can store sender, receiver, timestamp, block hash, etc. Have special names
+
+Examples of global variables are 
+
+- `msg.sender` -> Address of the account which sent the transaction
+- `block.coinbase` -> Address of the miner of the current block
+
+Scope is defined by where it is declared and not the value
+
+Solidity supports data types that are as follows
+
+- uint -> Unsigned integers. Will always be positive. Default value is `0`
+- int -> Signed integers. Default value is `0`
+- address -> Store a wallet address. Default value is `0x0000000000000000000000000000000000000000`
+- bool -> Boolean. Stores either true or false. Default value is `false`
+- string
+
+You can also declare the number of bits stored by an integer. This can be done via `int<bits>` or `uint<bits>`. Examples include `int8`, `uint16` and `uint256`
+
+The minimum number bits an integer can store is 8 bits and maximum is 256 bits and they are always in variations of 8
+
+The range of values will be from `0 to (2^<bits>) - 1`
+
+The `public` keyword is used to call a function/access a variable from within the contract as well as outside of it
+
+The `view` keyword is used in a function when it does not change the value of any state/global variable. These functions do not require gas and do not change the state of the contract (state variables)
+
+Functions can be created as follows
+
+```sol
+function name() public {
+	// Non-return function which does not accept parameter
+} 
+
+function name(int x) public {
+	// Non-return function which accepts parameter
+} 
+
+function name() public returns(bool){
+	// Function which does not accept parameters and returns a value
+}
+
+function name(uint x, int y) public returns(bool){
+	// Function which accepts parameters and returns a value
+}
+
+function name() public view returns(bool){
+	// Function which does not change state of global variables
+}
+```
+
+Solidity supports arrays as follows
+
+```sol
+uint[] arr; // Null array
+
+uint[] arr2 = [1,2,3]; // Static array
+
+uint[5] arr3; // Fixed size
+
+uint arr4[] = new uint[](5); // Dynamic arrays whose memory is allocated during runtime
+
+arr[2] = 10; // Accessing element
+```
+
+Arrays also have certain functions
+
+```sol
+arr.length; // Get array length
+
+arr.push() // Increase array length by 1
+
+arr.pop() // Decrease array length by 1
+```
+
+When returning an array (For example, a uint one) from a function, the return would be as follows `function arrReturn() public returns (uint[] memory)`
+
+You can also create strings as follows
+
+```sol
+string strName = "my secret data";
+```
+
+Strings support escape sequences such as `\n`, `\'`, `\"`, `\t`, `\f`, etc.
+
+When returning a string from a function, the return would be as follows `function arrReturn() public returns (string memory)`
+
+If we prefix a variable with the `memory` keyword, it will not store the value on the blockchain but instead in a temporary location during runtime and then remove it
+
+It does not matter if it is a state variable
+
+```sol
+string memory memVar = "hello memory variable is being tested";
+```
+
+While we can also prefix it with the `storage` keyword to store it on the blockchain
+
+```sol
+string storage storeVar = "hello storage variable is being tested";
+```
+
+We use the `memory` keyword when returning strings/arrays to prevent them from being stored permanently 
