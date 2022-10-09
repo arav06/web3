@@ -1,0 +1,28 @@
+[
+	{
+		"inputs": [],
+		"name": "getFood",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "newFood",
+				"type": "string"
+			}
+		],
+		"name": "setFood",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	}
+]
