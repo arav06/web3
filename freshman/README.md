@@ -93,3 +93,72 @@ Decentralization is used in
 - Supply Chain Tracking
 
 A change in the rules of a blockchain leads to a split in the blockchain into 2 different branches. This is called a split
+
+# What is Web3?
+
+The web aka the world wide web refers to the collection of websites which can be accessed via the internet
+
+## Web 1
+
+First phase of the web which took place between the 1980s and 2000s
+
+In this phase, users could simply read information provided by websites
+
+It made the web static
+
+The web browsers used during this time were Internet Explorer and Netscape
+
+## Web2
+
+Current version of the web which most of know
+
+Web1 was read-only while Web2 is read-write
+
+This means that users can read information from websites as well as submit information to the websites
+
+Lets users to consume data, interact with the website and create content 
+
+It made the web dynamic
+
+Web2 led to an explosion in the use of smartphones and mobile apps
+
+Web2 led to the control of the web by leading digital companies. It led to centralization
+
+Centralization leads to the control of your acts by 1 central authority. For example, Apple takes 30% of cut on paid-app downloads and Twitter can remove the President from their platform
+
+It leads to less security, privacy and control
+
+It also leads to higher chances of data breaches
+
+## Web3
+
+Web3 is the future of the web
+
+It is the decentralized and open web which is governed by multiple people and no central authority
+
+Instead of apps being the owner of your data, you are the sole owner of your data
+
+You can read data from apps, submit data to apps while still being the owner of your data
+
+It is for the benefit of the people rather than organizations
+
+Web3 makes the web decentralized, open, distributed, permissionless, trustless and secure
+
+Users dont require permission to be a part of Web3
+
+No central authority is allowed to govern actions taking place in this version of the web
+
+It is open-source
+
+It is trustless as users can interact publicly/privately without intervention of a third party
+
+It is permissionless as users do not require permission from a central authority to join
+
+## Summary
+
+Web1 - Read
+
+Web2 - Read and Write
+
+Web3  - Read, Write and Own
+
