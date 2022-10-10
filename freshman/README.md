@@ -419,4 +419,15 @@ While we can also prefix it with the `storage` keyword to store it on the blockc
 string storage storeVar = "hello storage variable is being tested";
 ```
 
-ABI stands for Application Binary Interface and it denotes all the functions which can be called and variables which can be accessed by public entities. It represents the features of the function in a compact way. Instructs how the external entities are to interact with the contract. Written in JSON
+ABI stands for Application Binary Interface and it denotes all the functions which can be called and variables which can be accessed by public entities. It represents the features of the contract in a compact way. Instructs how the external entities are to interact with the contract. Written in JSON
+
+# Build your first dApp
+
+Learned the following
+
+- Read data from smart contract
+- Write data to smart contract
+- Deploy smart contract to Goerli Ethereum Testnet
+- Interact with the smart contract via Ethers.js
+
+The code can be found [here](https://github.com/arav06/web3/tree/main/freshman/first-dApp)
