@@ -194,7 +194,7 @@ Ethereum allows for deploying of apps while still ensuring security and decentra
 
 People can also create their own tokens on Ethereum without anyone's permission. There are standards to be followed when creating tokens
 
-The ERC20 standard is to be followed when creating and deploying a smart contract to the network
+The ERC20 standard is to be followed when creating and deploying a token to the network
 
 ERC721 and ERC1155 are standards to be followed when creating and deploying NFTs to the network. Helps NFT  marketplaces be compatible with all types of NFTs
 
@@ -431,3 +431,82 @@ Learned the following
 - Interact with the smart contract via Ethers.js
 
 The code can be found [here](https://github.com/arav06/web3/tree/main/freshman/first-dApp)
+
+# Build your own cryptocurrency 
+
+The `import` keyword can be used to load functions, objects and variables from another contract
+
+```sol
+import "ERC20.sol"
+import "../ERC20.sol"
+import "https://github.com/arav06/contracts/blob/main/ERC20.sol"
+```
+
+In this case, we import the `ERC20.sol` contract to create tokens that follow the ERC20 standard
+
+The contract can now be referenced using the name of the contract defined in the `.sol` file
+
+ERC stands for Ethereum Request for Comment and they are standards that convey requirements and specifications for various use cases
+
+ERC20 is a standard which is to be followed when creating fungible tokens using smart contracts. Lets these tokens be compatible with all types of wallets
+
+Fungible tokens are the types of tokens which are similar to each other and not unique. ETH is a fungible token and so trading 1 ETH for a different 1 ETH does not make a difference
+
+When creating a contract, we can use the `is` keyword for inheritance to import the functions and members from another other contract which was imported
+
+```sol
+contract myContract is otherContract
+{
+	// Solidity Code
+}
+```
+
+The `constructor` keyword can be used to create a function which would be called when the contract is deployed
+
+```sol
+constructor()
+{
+	// Solidity Code
+}
+
+constructor(string memory name, uint phone)
+{
+	// Solidity Code
+}
+```
+
+The parameters of a constructor need to be submitted to the contract before deployment
+
+If we want to run the constructor of another imported contract when running the constructor in our, we can do it as follows
+
+```sol
+constructor() ERC20(){
+	// Solidity Code
+} 
+```
+
+Here, since we imported the ERC20 contract which has a constructor, we can reference its constructor via `<contract name>()` i.e. `ERC20()`
+
+Once the above code is deployed, the constructor would be called which would also called the constructor of the ERC20 contract
+
+We can also pass parameters from our constructor to the constructor of the imported contract
+
+```sol
+constructor(string memory tName, string memory tSymbol) ERC20(tName, tSymbol){
+	// Solidity Code
+} 
+```
+
+The constructor for the ERC20 accepts 2 arguments: The name of our token and the symbol of our token
+
+`_mint()` is an internal function of the ERC20 contract to send tokens which have the specified name and specified symbol
+
+Internal functions can only be called from within that contract and not externally
+
+This accepts 2 parameters: The address to which the tokens are to be sent and the number of tokens to send
+
+When setting the number of tokens to be sent, it should always be in the form of `x * (10**18)` where x is the number of tokens
+
+This is done because 1 Ether (Dollar) is 10^18 Wei (Cents). So the value of 1 ERC20 token is 10^18 'cents'
+
+`msg.sender` is a global variable which stores the address of the account which made the transaction to deploy the contract
