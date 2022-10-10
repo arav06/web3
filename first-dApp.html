@@ -8,23 +8,23 @@
    </head>
    <body>
       <div>
-         <label>Enter your favourite food</label> <br />
-         <input type="text" id="food" />
+         <label>Enter your current mood</label> <br />
+         <input type="text" id="mood" />
          <br>
          <br>
-         <button onclick="getFood()">Get Favourite Food</button>
-         <button onclick="setFood()">Set Favourite Food</button>
+         <button onclick="getMood()">Get Current Mood</button>
+         <button onclick="setMood()">Set New Mood</button>
       </div>
       <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
       <script>
          window.ethereum.enable(); // Checking if a wallet exists 
          var provider = new ethers.providers.Web3Provider(window.ethereum); // Connects to our wallet to interact with the smart contract
          
-         var address = "0x9bd21D01976609b7067AdBbe94Bc33577016268C";
+         var address = "0xf0cC229Ac9Afb879F26b17402704B83Af0dB15C5";
          var abi = [
            {
              "inputs": [],
-             "name": "getFood",
+             "name": "getMood",
              "outputs": [
                {
                  "internalType": "string",
@@ -39,11 +39,11 @@
              "inputs": [
                {
                  "internalType": "string",
-                 "name": "newFood",
+                 "name": "newMood",
                  "type": "string"
                }
              ],
-             "name": "setFood",
+             "name": "setMood",
              "outputs": [],
              "stateMutability": "nonpayable",
              "type": "function"
@@ -63,21 +63,21 @@
          
          // Async functions -> Multiple activities can take place at the same time
          
-         async function getFood(){
-           getFoodObj = contract.getFood(); // Calling a function from the smart contract
-           var currentFood = await getFoodObj; // Waiting for function to be executed
-           makeAlert(currentFood);
+         async function getMood(){
+           getMoodObj = contract.getMood(); // Calling a function from the smart contract
+           var currentMood = await getMoodObj; // Waiting for function to be executed
+           makeAlert(currentMood);
          }
          
-         async function setFood(){
-           var food = document.getElementById("food").value
-           setFoodObj = contract.setFood(food); // Calling a function from the smart contract
-           await setFoodObj; // Waiting for function to be executed
-           alert("Favourite food updated!");
+         async function setMood(){
+           var mood = document.getElementById("mood").value
+           setMoodObj = contract.setMood(mood); // Calling a function from the smart contract
+           await setMoodObj; // Waiting for function to be executed
+           alert("Current mood updated!");
            }
          
          function makeAlert(current){
-           alert(`Current favourite food = ${current}`);
+           alert(`Current mood = ${current}`);
          }
       </script>
    </body>
