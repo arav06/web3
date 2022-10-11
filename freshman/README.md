@@ -510,3 +510,155 @@ When setting the number of tokens to be sent, it should always be in the form of
 This is done because 1 Ether (Dollar) is 10^18 Wei (Cents). So the value of 1 ERC20 token is 10^18 'cents'
 
 `msg.sender` is a global variable which stores the address of the account which made the transaction to deploy the contract
+
+# Build your own NFT using ERC-721
+
+ERC721 is the standard to be followed when creating non fungible tokens so that they are compatible with all wallets
+
+Non Fungible Tokens are unique tokens wherein none of them are similar to each other
+
+We will use HardHat, a framework to locally write, run, debug and deploy our smart contracts
+
+HardHat and its toolbox can be installed as follows
+
+```bash
+npm install --save-dev hardhat
+npm install @nomicfoundation/hardhat-toolbox
+```
+
+We can then setup our HardHat environment as follows
+
+```bash
+npx hardhat
+```
+
+In this case, we will be building a JavaScript project
+
+The file structure is as follows
+
+- contracts/ -> Solidity smart contracts
+- test/ -> Testing of our contract
+- scripts/ -> Automation scripts
+- hardhat.config.js -> HardHat config file
+
+We will also require the Open Zeppelin and they can be installed via this command
+
+```bash
+npm install @openzeppelin/contracts
+```
+
+```sol
+pragma solidity ^0.8.9
+
+import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+
+contract myNFT is ERC721 {
+    
+    constructor (string memory nName, string memory nSymbol) ERC721(nName, nSymbol)
+    {
+        _mint(msg.sender,1);
+    }
+}
+```
+
+Here we are doing the following
+
+- Importing the ERC721 contract to use the standard
+- Inherting the functions and variables from the ERC721 contract into myNFT contract
+- Creating a constructor which would accept the NFT's name and symbol
+- The constructor would also pass these values to the constructor of the ERC721 contract
+- It would finally send one of these NFTs to the account which deployed the smart contract
+
+We can compile our contract via this command
+
+```bash
+npx hardhat compile
+```
+
+Now we can deploy our smart contract by writing JavaScript code in a file in the scripts folder
+
+To do so we'll first need to import the `Ethers.js` library from HardHat as follows
+
+```js
+const { ethers } = require("hardhat");
+```
+
+Then we create a function to create and instance of the compiled contract and then deploy it
+
+```js
+async function deployNFT(){
+  const smartContract = await ethers.getContractFactory("myNFT"); // Create an instance of the myNFT contract using Ethers
+  const deployNFT = await smartContract.deploy("NFT Name","NFT Symbol"); // Deploying the contract. We are specifying the arguments for the constructor
+  await deployNFT.deployed(); // Waiting for it to be deployed
+  console.log(deployNFT.address); // Printing the address of the NFT
+}
+```
+
+The function can now be called and we can check if it was successful/unsuccessful during `then` and `catch`
+
+```js
+deployNFT().then(
+  () => {
+    console.log("Deployment Successful!");
+    process.exit(0)
+  })
+  .catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });
+```
+
+Now we will need to create an RPC node to connect to the blockchain and deploy the contract
+
+We can do this via QuickNode. After signing up, click on `Create an Endpoint` and choose the blockchain and network and continue
+
+For testing, we can disable `Token Based Authentication` in the `Security` Tab
+
+This node acts as an intermediatery used by HardHat to deploy our smart contract 
+
+We have to create a `.env` file containing the HTTP Provider URL and our private key
+
+```env
+HTTP_URL = "https://something-something1-something2.blockchain-network.discover.quiknode.pro"
+PRIVATE = "MY PRIVATE KEY"
+```
+
+To access these environment variables, we will install the `dotenv` package
+
+```bash
+npm install dotenv	
+```
+
+Now replace the contents of `hardhat.config.js` with this 
+
+```js
+require("@nomicfoundation/hardhat-toolbox");
+require("dotenv").config({ path: ".env" });
+
+const quicknode = process.env.HTTP_URL; // Getting value from .env file
+const privateKey = process.env.PRIVATE; // Getting value from .env file
+
+module.exports = {
+  solidity: "0.8.17",
+  networks: {
+    goerli: {
+      url: quicknode,
+      accounts: [privateKey],
+    },
+  },
+};
+```
+
+Here, the Solidity compiler is set to `0.8.17` and in the networks, `goerli` is the identifier for the network who's node is defined
+
+And now we can deploy the smart contract as follows
+
+```bash
+npx hardhat run scripts/deploy.js --network goerli
+```
+
+Here, `deploy.js` is the file containing the Javascript code to deploy our NFT and `goerli` refers to the network defined in `hardhat.config.js`
+
+If you see `Deployment Successful`, it means that the NFT has been deployed to the network. Verify it by looking up the address on the Block Explorer for the network
+
+***
